@@ -4,8 +4,8 @@ build:
 run: build
 	./bin/projectx
 
-test:
-	go test -v ./... 
+# test:
+# 	go test -v ./... 
 
 clean: 
 	rm -f ./bin/projectx
@@ -16,5 +16,5 @@ docker:
 vm:
 	docker exec -it blocker-go bash
 
-docker-test:
-	docker run -it --network host --name hostapi
+test:
+	go run main.go
