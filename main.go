@@ -14,7 +14,7 @@ var testUrl = "http://127.0.0.1:8545"
 func main(){
     client, err := ethclient.DialContext(context.Background(), testUrl)
     if err != nil {
-        log.Fatal("ERROR %+v", err)
+        log.Fatalf("ERROR %+v", err)
     }
     // fmt.Printf("start clinet :%+v", client)
 
@@ -22,8 +22,8 @@ func main(){
     
     block, err := client.BlockByNumber(context.Background(), nil)
     if err != nil{
-        log.Fatal("error to get a block %v", err)
+        log.Fatalf("error to get a block %v", err)
     }
 
-    fmt.Println("block number %v", block.Number())
+    fmt.Printf("block number %v", block.Number())
 }

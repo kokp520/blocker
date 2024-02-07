@@ -1,6 +1,6 @@
-module github.com/kokp520/blocker
+module github.com/kok520/blocker
 
-go 1.18
+go 1.21.5
 
 require github.com/ethereum/go-ethereum v1.13.11
 
