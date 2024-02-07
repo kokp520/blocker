@@ -32,3 +32,23 @@ genesis.json - geth config
 
 ### main
 
+
+
+### other info
+
+reply attack for ETH: ETH曾受到reply attack過
+
+Rollup : 
+
+
+### 待解決問題
+
+P1
+docker run --network host image 
+本地環境開了一個repo/go-server server.go 
+虛擬環境可以打到該server 但ganache開的port無法打到
+
+後來放棄使用docker直接在本地環境中載go export切換go版本
+go.work 改成 go.work.disable
+
+

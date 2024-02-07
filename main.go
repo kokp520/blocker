@@ -9,7 +9,7 @@ import (
 )
 
 
-var testUrl = "https://127.0.0.1:8545"
+var testUrl = "http://127.0.0.1:8545"
 
 func main(){
     client, err := ethclient.DialContext(context.Background(), testUrl)

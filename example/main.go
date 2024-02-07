@@ -15,17 +15,17 @@ import (
 
 func main() {
 	// address of etherum env
-	client, err := ethclient.Dial("http://127.0.0.1:7545")
-	if err != nil {
-		panic(err)
-	}
+	// client, err := ethclient.Dial("http://127.0.0.1:7545")
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	// create auth and transaction package for deploying smart contract
-	auth := getAccountAuth(client, "20E773d86834dBD6d8aDaeb0eD3b03221e0BE181")
+	// auth := getAccountAuth(client, "20E773d86834dBD6d8aDaeb0eD3b03221e0BE181")
 
 
-	fmt.Printf("debug ---- %+v -----\n", auth)
-	return
+	// fmt.Printf("debug ---- %+v -----\n", client)
+	// return
 	
 	//deploying smart contract
 	// address, tx, instance, err := api.DeployApi(auth, client)
