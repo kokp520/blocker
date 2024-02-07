@@ -51,4 +51,7 @@ docker run --network host image
 後來放棄使用docker直接在本地環境中載go export切換go版本
 go.work 改成 go.work.disable
 
+ps. 後來想到
+[ganache-cli](https://www.npmjs.com/package/ganache-cli)
+也可以直接抓docker到虛擬環境中執行
 
