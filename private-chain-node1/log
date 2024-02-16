@@ -1,0 +1,18 @@
+password 123
+
+
+ ~/repo/blocker/private-chain-node1/ [main*] geth --datadir ./ account new
+INFO [02-11|21:37:29.483] Maximum peer count                       ETH=50 total=50
+Your new account is locked with a password. Please give a password. Do not forget this password.
+Password:
+Repeat password:
+
+Your new key was generated
+
+Public address of the key:   0xF6b9c0E947C101ad18E0EF05c792D7008a31BEdB
+Path of the secret key file: keystore/UTC--2024-02-11T13-37-36.254322000Z--f6b9c0e947c101ad18e0ef05c792d7008a31bedb
+
+- You can share your public address with anyone. Others need it to interact with you.
+- You must NEVER share the secret key with anyone! The key controls access to your funds!
+- You must BACKUP your key file! Without the key, it's impossible to access account funds!
+- You must REMEMBER your password! Without the password, it's impossible to decrypt the key!

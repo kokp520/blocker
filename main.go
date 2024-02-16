@@ -14,41 +14,43 @@ import (
 	"github.com/ethereum/go-ethereum/rpc"
 )
 
-var privateKeyString = "9fca095be2b2bac936fe551f947ba34f0799fd037e00878f25703f2eaa0b1763"
+// index 0
+var privateKeyString = "dd64527f564b4a86e896deb659c34b449ca1b67aecf2198b0ef4845c22cdccfa"
 var rpcURL = "http://127.0.0.1:8545"
-var recipient_address = "5d631Fc816860f2EEE452Fe5EB74b99C1869306e"
+// index 1
+var recipient_address = "18f57E1eD403A39C664dde2ca6386D50cBe45E30"
 
 func main() {
-	// 解析私钥
+	// get 私鑰 ecc 橢圓加密xyz
 	privateKey, err := crypto.HexToECDSA(privateKeyString)
 	if err != nil {
 		log.Fatalf("Failed to parse private key: %v", err)
 	}
 
-	// 连接到以太坊节点
+	// connect 到以太節點
 	client, err := rpc.DialContext(context.Background(), rpcURL)
 	if err != nil {
 		log.Fatalf("Failed to connect to the Ethereum client: %v", err)
 	}
 	ethClient := ethclient.NewClient(client)
 
-	// 从私钥中获取公钥
+	// get public key
 	publicKey := privateKey.Public()
 	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
 	if !ok {
 		log.Fatal("Failed to cast public key to ECDSA")
 	}
 
-	// 获取发送者地址
+	// get address from sending person
 	fromAddress := crypto.PubkeyToAddress(*publicKeyECDSA)
 
-	// 构建交易参数
+	// retrieve nonce
 	nonce, err := ethClient.PendingNonceAt(context.Background(), fromAddress)
 	if err != nil {
 		log.Fatalf("Failed to retrieve nonce: %v", err)
 	}
-	value := big.NewInt(1) // 0 ETH
-	gasLimit := uint64(21000) // 交易的燃气限制
+	value := big.NewInt(10) // xxx ETH
+	gasLimit := uint64(21000) // gas fee
 	gasPrice, err := ethClient.SuggestGasPrice(context.Background())
 	if err != nil {
 		log.Fatalf("Failed to retrieve gas price: %v", err)
@@ -56,20 +58,22 @@ func main() {
 
 	toAddress := common.HexToAddress(recipient_address) // 接收者地址
 
-	// 创建交易
+	// create transaction
 	tx := types.NewTransaction(nonce, toAddress, value, gasLimit, gasPrice, nil)
 
-	// 对交易进行签名
+	// sign for transacation
 	chainID, err := ethClient.NetworkID(context.Background())
 	if err != nil {
 		log.Fatalf("Failed to retrieve network ID: %v", err)
 	}
+
+
 	signedTx, err := types.SignTx(tx, types.NewEIP155Signer(chainID), privateKey)
 	if err != nil {
 		log.Fatalf("Failed to sign transaction: %v", err)
 	}
 
-	// 发送交易
+	// send transacation -> finish
 	err = ethClient.SendTransaction(context.Background(), signedTx)
 	if err != nil {
 		log.Fatalf("Failed to send transaction: %v", err)
